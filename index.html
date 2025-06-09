@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>민규 ♥ 희선 결혼식 청첩장</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            min-height: 100vh;
+        }
+
+        .header {
+            text-align: center;
+            padding: 40px 20px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><radialGradient id="a" cx="50%" cy="0%" r="100%"><stop offset="0%" stop-color="%23fff" stop-opacity="0.1"/><stop offset="100%" stop-color="%23fff" stop-opacity="0"/></radialGradient></defs><rect width="100" height="20" fill="url(%23a)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .couple-names {
+            font-size: 2.2em;
+            font-weight: 300;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .wedding-date {
+            font-size: 1.1em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .main-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 30px auto;
+            background: linear-gradient(45deg, #ff9a9e, #fecfef, #fecfef);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 4px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .photo-placeholder {
+            font-size: 4em;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .description {
+            padding: 20px;
+            text-align: center;
+            font-size: 1.1em;
+            color: #666;
+            line-height: 1.8;
+            background: rgba(255, 255, 255, 0.7);
+            margin: 0 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .tabs-container {
+            margin-top: 30px;
+            padding: 0 20px 20px;
+        }
+
+        .tabs {
+            display: flex;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            gap: 5px;
+            padding: 10px 0;
+        }
+
+        .tabs::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tab {
+            background: rgba(255, 255, 255, 0.7);
+            border: none;
+            padding: 12px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9em;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            color: #666;
+            min-width: fit-content;
+        }
+
+        .tab.active {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .tab-content {
+            display: none;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            margin-top: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .timeline-item {
+            margin-bottom: 20px;
+            padding-left: 20px;
+            border-left: 3px solid #667eea;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -7px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background: #667eea;
+            border-radius: 50%;
+        }
+
+        .info-card {
+            background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(240, 147, 251, 0.3);
+        }
+
+        .code-block {
+            background: #2d3748;
+            color: #68d391;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            background: linear-gradient(45deg, #ffecd2, #fcb69f);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2em;
+        }
+
+        .heart {
+            color: #e91e63;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .emoji {
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="couple-names">민규 <span class="heart">♥</span> 희선</div>
+            <div class="wedding-date">2024.12.14 (토) 오후 2시</div>
+        </div>
+
+        <div class="main-photo">
+            <div class="photo-placeholder">💕</div>
+        </div>
+
+        <div class="description">
+            두 개발자가 만나 하나의 완벽한 코드를 작성합니다.<br>
+            우리의 새로운 프로젝트 시작을 함께 축하해 주세요.<br>
+            <code>if (love === true) { return happiness; }</code>
+        </div>
+
+        <div class="tabs-container">
+            <div class="tabs">
+                <button class="tab active" onclick="showTab('timeline')">타임라인</button>
+                <button class="tab" onclick="showTab('ceremony')">예식정보</button>
+                <button class="tab" onclick="showTab('location')">오시는길</button>
+                <button class="tab" onclick="showTab('gallery')">갤러리</button>
+                <button class="tab" onclick="showTab('guestbook')">방명록</button>
+                <button class="tab" onclick="showTab('gifts')">축의금</button>
+                <button class="tab" onclick="showTab('dresscode')">드레스코드</button>
+                <button class="tab" onclick="showTab('rsvp')">참석여부</button>
+                <button class="tab" onclick="showTab('contact')">연락처</button>
+                <button class="tab" onclick="showTab('about')">About</button>
+            </div>
+
+            <div id="timeline" class="tab-content active">
+                <h3>💝 우리의 이야기</h3>
+                <div class="timeline-item">
+                    <strong>2019.03</strong><br>
+                    첫 만남 - 스타트업 해커톤에서 같은 팀
+                </div>
+                <div class="timeline-item">
+                    <strong>2020.07</strong><br>
+                    첫 데이트 - 코딩 카페에서 코드 리뷰
+                </div>
+                <div class="timeline-item">
+                    <strong>2022.02</strong><br>
+                    동거 시작 - 함께 개발환경 세팅
+                </div>
+                <div class="timeline-item">
+                    <strong>2023.12</strong><br>
+                    프로포즈 - GitHub에 Marriage Request PR
+                </div>
+                <div class="timeline-item">
+                    <strong>2024.12</strong><br>
+                    결혼식 - 우리의 메인 브랜치 합치기 🎉
+                </div>
+            </div>
+
+            <div id="ceremony" class="tab-content">
+                <h3>🎊 예식 정보</h3>
+                <div class="info-card">
+                    <strong>📅 일시</strong><br>
+                    2024년 12월 14일 토요일 오후 2시
+                </div>
+                <div class="info-card">
+                    <strong>📍 장소</strong><br>
+                    강남 웨딩홀 3층 그랜드볼룸
+                </div>
+                <div class="info-card">
+                    <strong>👔 복장</strong><br>
+                    스마트 카주얼 (개발자스러운 복장 환영)
+                </div>
+                <p>식사 준비되어 있습니다. 많은 축하 부탁드려요! 🍽️</p>
+            </div>
+
+            <div id="location" class="tab-content">
+                <h3>🗺️ 오시는 길</h3>
+                <div class="info-card">
+                    <strong>🚇 지하철</strong><br>
+                    2호선 강남역 3번 출구 도보 5분
+                </div>
+                <div class="info-card">
+                    <strong>🚗 자가용</strong><br>
+                    주차장 완비 (3시간 무료)
+                </div>
+                <div class="info-card">
+                    <strong>🚌 버스</strong><br>
+                    강남역 앞 정류장 하차
+                </div>
+                <p>📍 서울시 강남구 테헤란로 123 강남웨딩홀<br>
+                문의: 02-1234-5678</p>
+            </div>
+
+            <div id="gallery" class="tab-content">
+                <h3>📸 우리의 추억들</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item">📷</div>
+                    <div class="gallery-item">💑</div>
+                    <div class="gallery-item">🎂</div>
+                    <div class="gallery-item">✈️</div>
+                </div>
+                <p style="margin-top: 15px;">더 많은 사진은 결혼식 당일 QR코드로 확인하세요!</p>
+            </div>
+
+            <div id="guestbook" class="tab-content">
+                <h3>📝 방명록</h3>
+                <div class="code-block">
+// 축하 메시지를 남겨주세요
+const congratulation = {
+  name: "your_name",
+  message: "축하합니다! 💝",
+  date: new Date()
+};
+
+console.log("Thank you for coming!");
+                </div>
+                <p>결혼식 당일 QR코드를 통해 온라인 방명록을 작성해 주세요! 💌</p>
+            </div>
+
+            <div id="gifts" class="tab-content">
+                <h3>💝 축의금 안내</h3>
+                <div class="info-card">
+                    <strong>🏦 신랑측</strong><br>
+                    국민은행 123-456-789012<br>
+                    예금주: 류민규
+                </div>
+                <div class="info-card">
+                    <strong>🏦 신부측</strong><br>  
+                    신한은행 987-654-321098<br>
+                    예금주: 권희선
+                </div>
+                <p>마음만 받겠습니다. 참석해 주시는 것만으로도 큰 선물입니다! 🎁</p>
+            </div>
+
+            <div id="dresscode" class="tab-content">
+                <h3>👗 드레스 코드</h3>
+                <div class="info-card">
+                    <strong>🎨 컬러</strong><br>
+                    파스텔톤 추천 (핑크, 라벤더, 민트)
+                </div>
+                <div class="info-card">
+                    <strong>👔 스타일</strong><br>
+                    스마트 캐주얼 (개발자다운 센스 환영!)
+                </div>
+                <div class="info-card">
+                    <strong>⚠️ 주의사항</strong><br>
+                    전체 화이트, 전체 블랙 피해주세요
+                </div>
+                <p>편안하고 멋진 모습으로 오세요! ✨</p>
+            </div>
+
+            <div id="rsvp" class="tab-content">
+                <h3>✅ 참석 여부</h3>
+                <div class="code-block">
+const wedding = {
+  date: "2024-12-14",
+  time: "14:00",
+  location: "강남웨딩홀"
+};
+
+// 참석 여부를 알려주세요!
+if (canAttend) {
+  RSVP.confirm();
+} else {
+  RSVP.decline();
+}
+                </div>
+                <div class="contact-item">
+                    <span class="emoji">📞</span>
+                    <div>
+                        <strong>전화 확인</strong><br>
+                        신랑: 010-1234-5678<br>
+                        신부: 010-9876-5432
+                    </div>
+                </div>
+            </div>
+
+            <div id="contact" class="tab-content">
+                <h3>📞 연락처</h3>
+                <div class="contact-item">
+                    <span class="emoji">👨‍💻</span>
+                    <div>
+                        <strong>신랑 류민규</strong><br>
+                        010-1234-5678
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="emoji">👩‍💻</span>
+                    <div>
+                        <strong>신부 권희선</strong><br>
+                        010-9876-5432
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="emoji">💌</span>
+                    <div>
+                        <strong>이메일</strong><br>
+                        wedding@mingyu-heesun.com
+                    </div>
+                </div>
+            </div>
+
+            <div id="about" class="tab-content">
+                <h3>💕 About Us</h3>
+                <div class="code-block">
+class Couple {
+  constructor() {
+    this.groom = new Developer("류민규", "Backend");
+    this.bride = new Developer("권희선", "Frontend");
+    this.relationship = "Perfect Match";
+    this.since = "2019";
+  }
+  
+  merge() {
+    return new Family(this.groom, this.bride);
+  }
+}
+
+const ourStory = new Couple();
+const future = ourStory.merge();
+console.log("Happy Ever After! 💝");
+                </div>
+                <p>두 개발자가 만나 인생이라는 가장 아름다운 프로젝트를 시작합니다. 함께 축하해 주세요! 🎉</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabName) {
+            // 모든 탭 컨텐츠 숨기기
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // 모든 탭 버튼 비활성화
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // 선택된 탭 컨텐츠 보이기
+            document.getElementById(tabName).classList.add('active');
+            
+            // 클릭된 탭 버튼 활성화
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
